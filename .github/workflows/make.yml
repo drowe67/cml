@@ -19,4 +19,4 @@ jobs:
       shell: bash
       run: |
            cd source
-           echo "make; quit" | octave-cli -gf
+           echo "make; quit" | octave-cli -qf
