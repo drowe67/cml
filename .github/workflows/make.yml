@@ -1,0 +1,23 @@
+name: Make
+
+on: [push]
+
+env:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install packages
+      shell: bash
+      run: |
+           sudo apt-get update
+           sudo apt-get install octave octave-common octave-signal liboctave-dev
+
+    - name: Make CML
+      shell: bash
+      run: |
+           cd cml/source
+           echo "make; quit" | octave-cli -gf
