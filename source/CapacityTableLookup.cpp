@@ -41,7 +41,7 @@
         
 #include <math.h>
 #include <mex.h>
-#include <matrix.h>
+#include <Matrix.h>
 #include <stdlib.h>
 
 /* main function that interfaces with MATLAB */

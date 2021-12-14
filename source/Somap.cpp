@@ -42,7 +42,7 @@
 */
 #include <math.h>
 #include <mex.h>
-#include <matrix.h>
+#include <Matrix.h>
 #include <stdlib.h>
 #include "./include/maxstar.h"
 

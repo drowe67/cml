@@ -1,21 +1,21 @@
-/* file: Deinterleave.c
+/* file: Interleave.c
 
-   Description: Deinterleave one block of data according to interleaving pattern alpha_code
+   Description: Interleave one block of data according to interleaving pattern alpha_code
 
    The calling syntax is:
 
-      [output] = Deinterleave(input, alpha_code )
+      [output] = Interleave(input, alpha_code )
 
-      output = deinterleaved data 
+      output = interleaved data 
 
-      input  = interleaved data (float or int)
+      input  = uninterleaved data (float or int)
 	  alpha_code = interleaver pattern
-
+  
    Copyright (C) 2005-2006, Matthew C. Valenti
 
    Last updated on Jan. 11, 2006
 
-   Function Deinterleave is part of the Iterative Solutions 
+   Function Interleave is part of the Iterative Solutions 
    Coded Modulation Library. The Iterative Solutions Coded Modulation 
    Library is free software; you can redistribute it and/or modify it 
    under the terms of the GNU Lesser General Public License as published 
@@ -30,11 +30,10 @@
    You should have received a copy of the GNU Lesser General Public
    License along with this library; if not, write to the Free Software
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-        
 */
 #include <math.h>
 #include <mex.h>
-#include <matrix.h>
+#include <Matrix.h>
 #include <stdlib.h>
 
 /* Input Arguments */
@@ -57,7 +56,7 @@ void mexFunction(
 
 	/* Check for proper number of arguments */
 	if ((nrhs < 2 )||(nlhs  > 1)) {
-		mexErrMsgTxt("Usage: [output] = Deinterleave(input, alpha_code )");
+		mexErrMsgTxt("Usage: [output] = Interleave(input, alpha_code )");
 	} else {
 		/* first input is the data word */
 		input = mxGetPr(INPUT);	
@@ -65,7 +64,7 @@ void mexFunction(
 
 		/* second input is the interleaver */
 		if ( mxGetN(ALPHA) != InterleaverLength )
-			mexErrMsgTxt("Deinterleave: Error input and alpha_code must be same length");
+			mexErrMsgTxt("Interleave: Error input and alpha_code must be same length");
 		alpha = mxGetPr(ALPHA);
 
 		OUTPUT = mxCreateDoubleMatrix(1, InterleaverLength, mxREAL );
@@ -74,7 +73,7 @@ void mexFunction(
 		/* Interleave */
 		for(i=0;i<InterleaverLength;i++) { 
 			index = (int) alpha[i];
-			output_p[index] = input[i];
+			output_p[i] = input[index];
 		}
 	}
 

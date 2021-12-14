@@ -1,20 +1,20 @@
-/* file: CreateUmtsInterleaver.c
+/* file: CreateCcsdsInterleaver.c
 
-   Description: Produce an interleaver according to the UMTS spec.
+   Description: Produce an interleaver according to the CCSDS spec.
 
    The calling syntax is:
 
-		[alpha] = CreateUmtsInterleaver( K )
+		[alpha] = CreateCcsdsInterleaver( K )
 
          alpha  = the interleaver in a length K vector 
 		
          K  = the size of the interleaver 
 
-   Copyright (C) 2005-2006, Matthew C. Valenti
+   Copyright (C) 2006, Matthew C. Valenti
 
-   Last updated on June 10, 2006
+   Last updated on June 24, 2006
 
-   Function CreateUmtsInterleaver is part of the Iterative Solutions 
+   Function CreateCcsdsInterleaver is part of the Iterative Solutions 
    Coded Modulation Library. The Iterative Solutions Coded Modulation 
    Library is free software; you can redistribute it and/or modify it 
    under the terms of the GNU Lesser General Public License as published 
@@ -33,7 +33,7 @@
 */
 #include <math.h>
 #include <mex.h>
-#include <matrix.h>
+#include <Matrix.h>
 #include <stdlib.h>
 
 /* library of functions */
@@ -55,28 +55,28 @@ void mexFunction(
 	int     DataLength;
     double	*output_p;
 	int     *alpha_code; /* interleaver */
-    int     *interleaver_input;	/* Temporary array used to initialize the interleaver. */
 	int     i;
 
 	/* Check for proper number of arguments */
 	if (nrhs < 1) {
-		mexErrMsgTxt("[alpha] = CreateUmtsInterleaver( K )");
-	} else if (nlhs > 2) {
-		mexErrMsgTxt("[alpha] = CreateUmtsInterleaver( K )");
+		mexErrMsgTxt("[alpha] = CreateCcsdsInterleaver( K )");
+	} else if (nlhs > 1) {
+		mexErrMsgTxt("[alpha] = CreateCcsdsInterleaver( K )");
 	}	
 	
 	/* initialize the input data */
 	DataLength   = (int) *mxGetPr(INPUT);
 
-	if ( (DataLength < 40)|( DataLength > 5114) )
-		mexErrMsgTxt("CreateUmtsInterleaver: Input must be between 40 and 5114");
+	if ( !( ( DataLength == 1784 )||( DataLength == 3568 )||( DataLength == 7136 )||( DataLength == 8920 ) ) )
+		mexErrMsgTxt("CreateCcsdsInterleaver: CCSDS Interleaver size must be 7184, 3568, 7136, or 8920");
 
 	/* Create the interleaver */
+	/* printf( "\nMaking interleaver\n" ); */
 	alpha_code = (int*)calloc( DataLength, sizeof(int) );
-	interleaver_input = (int*)calloc( DataLength, sizeof(int) );
-	for (i=0;i<DataLength;i++)
-		interleaver_input[i] = i;
-	CreateUmtsInterleaver( DataLength, interleaver_input, alpha_code );
+
+	CreateCcsdsInterleaver( DataLength, alpha_code );
+	/* printf( "Done making the interleaver\n" );
+	 printf( "K = %d\n", DataLength ); */
 
 	/* Output encoded data */
 	OUTPUT = mxCreateDoubleMatrix(1, DataLength, mxREAL);
@@ -84,10 +84,12 @@ void mexFunction(
 
 	for (i=0;i<DataLength;i++) {
 		output_p[i] = alpha_code[i];
+		/* printf( "%d", CodeBits[i] ); */
 	}
 
+	/* printf( "\n" ); */
+
 	free( alpha_code );
-	free( interleaver_input );
 
 	return;
 }

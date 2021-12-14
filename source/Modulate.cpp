@@ -39,7 +39,7 @@
 */
 #include <math.h>
 #include <mex.h>
-#include <matrix.h>
+#include <Matrix.h>
 #include <stdlib.h>
 
 /* Input Arguments
