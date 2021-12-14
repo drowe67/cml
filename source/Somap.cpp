@@ -49,10 +49,10 @@
 /* Input Arguments
 prhs[0] is input
 prhs[1] is demod_type
-prhs[2] is ex_info
+prhs[2] is ex_info */
 
 /* Output Arguments
-plhs[0] is output
+plhs[0] is output */
 
 /* main function that interfaces with MATLAB */
 void mexFunction(
@@ -146,7 +146,7 @@ void mexFunction(
 		for (i=0;i<M;i++) {
 			metric = input[n*M+i]; /* channel metric for this symbol */
 
-			mask = 1 << m - 1;					
+			mask = 1 << (m - 1);					
 			for (j=0;j<m;j++) {		/* incorporate extrinsic info */
 				if (mask&i) {
 					metric += llr[n*m+j];
@@ -154,7 +154,7 @@ void mexFunction(
 				mask = mask >> 1;
 			}
 
-			mask = 1 << m - 1;
+			mask = 1 << (m - 1);
 			for (k=0;k<m;k++) {	/* loop over bits */
 				if (mask&i) {
 					/* this bit is a one */

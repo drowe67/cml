@@ -41,7 +41,7 @@
 /* Input Arguments 
 prhs[0] is input
 prhs[1] is pun_pattern
-prhs[2] is tail_pattern
+prhs[2] is tail_pattern */
 
 /* Output Arguments
 plhs[0] is output */

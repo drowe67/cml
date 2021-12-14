@@ -42,10 +42,10 @@
 
 /* Input Arguments
 prhs[0] is input
-prhs[1] is data
+prhs[1] is data */
 
 /* Output Arguments
-plhs[0] is output
+plhs[0] is output */
 
 /* main function that interfaces with MATLAB */
 void mexFunction(
@@ -89,7 +89,7 @@ void mexFunction(
   /* printf( "number of symbols = %d\n", number_symbols);
   printf( "number of bits = %d\n", number_bits );
   printf( "M = %d\n", M);
-  printf( "Bits per symbol = %d\n", bits_per_symbol ); /*
+  printf( "Bits per symbol = %d\n", bits_per_symbol ); */
   
   /* make sure that number of bits is consistent */
   if ( number_bits%bits_per_symbol )

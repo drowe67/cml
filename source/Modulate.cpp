@@ -44,10 +44,10 @@
 
 /* Input Arguments
 prhs[0] is input
-prhs[1] is S_matrix
+prhs[1] is S_matrix */
 
 /* Output Arguments
-plhs[0] is output
+plhs[0] is output */
 
 /* main function that interfaces with MATLAB */
 void mexFunction(

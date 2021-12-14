@@ -45,10 +45,10 @@
 prhs[0] is input
 prhs[1] is EsNo
 prhs[2] is csi_flag
-prhs[3] is fade_coef
+prhs[3] is fade_coef */
 
 /* Output Arguments
-plhs[0] is output
+plhs[0] is output */
 
 /* the logI_0 function */
 static float logbesseli0(float x)
