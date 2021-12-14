@@ -87,7 +87,7 @@ static float max_star0(
 					  float delta1, 
 					  float delta2 )
 {
-	register float diff;
+	float diff;
 	
 	diff = delta2 - delta1;
 
@@ -122,7 +122,7 @@ static float max_star2(
 {
 /* Return maximum of delta1 and delta2
    and in correction value if |delta1-delta2| < TVALUE */
-	register float diff;	
+	float diff;	
 	diff = delta2 - delta1;
 
 	if ( diff > TVALUE )
@@ -142,7 +142,7 @@ static float max_star3(
 					  float delta1, 
 					  float delta2 )
 {
-	register float diff;
+	float diff;
 	diff = (float) fabs( delta2 - delta1 );
 	
 	if (delta1 > delta2) {
