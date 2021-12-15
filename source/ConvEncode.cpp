@@ -65,7 +65,7 @@ void mexFunction(
 	double	*input, *g_array;
 	double	*output_p;
 	int      DataLength, CodeLength, i, j, index;
-	long long      subs[] = {1,1};
+	mwIndex  subs[] = {1,1};
 	int     *g_encoder;
 	int		 nn, KK, mm, code_type, max_states;
 	double   elm;
