@@ -32,7 +32,7 @@ end
 
 % determine version
 tempstring = version;
-if (( strcmp(tempstring(1:3), '7.2' )|strcmp(tempstring(1:3), '7.1' ) )&ispc) % version 7.1 or 7.2
+if (strcmp(tempstring(1:3), '7.2') | strcmp(tempstring(1:3), '7.1')) && ispc % version 7.1 or 7.2
     mex -output ../mex/Capacity.dll Capacity.cpp
     mex -output ../mex/CapacityTableLookup.dll CapacityTableLookup.cpp
     mex -output ../mex/ConvEncode.dll ConvEncode.cpp
