@@ -27,7 +27,7 @@ clear Demod2D.cpp
 
 % if this is linux, the files need to be deleted
 if isunix
-    delete ../mex/*
+    system("rm -f mex/*.mex");
 end
 
 % determine version
