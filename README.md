@@ -8,7 +8,5 @@ The codec2 project specific changes in this repo include:
 
 Building:
 ```
-cd cml/source
-octave-cli
-octave:> make
+$ make
 ```
